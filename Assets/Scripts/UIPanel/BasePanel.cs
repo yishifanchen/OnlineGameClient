@@ -2,6 +2,11 @@
 using System.Collections;
 
 public class BasePanel : MonoBehaviour {
+    protected UIManager uiMng;
+    public UIManager UIMng
+    {
+        set { uiMng = value; }
+    }
     /// <summary>
     /// 界面被显示出来
     /// </summary>
