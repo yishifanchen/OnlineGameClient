@@ -39,6 +39,7 @@ public class UIManager:BaseManager {
     private Dictionary<UIPanelType, string> panelPathDict;//存储所有面板Prefab的路径
     private Dictionary<UIPanelType, BasePanel> panelDict;//保存所有实例化面板的游戏物体身上的BasePanel组件
     private Stack<BasePanel> panelStack;
+    private MessagePanel msgPanel;
 
     public UIManager(GameFacade facade):base(facade)
     {
@@ -145,14 +146,12 @@ public class UIManager:BaseManager {
             panelPathDict.Add(info.panelType, info.path);
         }
     }
-
-    /// <summary>
-    /// just for test
-    /// </summary>
-    //public void Test()
-    //{
-    //    string path ;
-    //    panelPathDict.TryGetValue(UIPanelType.Knapsack,out path);
-    //    Debug.Log(path);
-    //}
+    public void InjectMsgPanel(MessagePanel msgPanel)
+    {
+        this.msgPanel = msgPanel;
+    }
+    public void ShowMessage(string msg)
+    {
+        msgPanel.ShowMessage(msg);
+    }
 }
