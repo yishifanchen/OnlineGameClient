@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Common;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
@@ -63,5 +64,9 @@ public class GameFacade : MonoBehaviour {
         playerMng.OnDestroy();
         clientMng.OnDestroy();
         cameraMng.OnDestroy();
+    }
+    public void SendRequest(RequestCode requestCode, ActionCode actionCode, string data)
+    {
+        clientMng.SendRequest(requestCode,actionCode,data);
     }
 }

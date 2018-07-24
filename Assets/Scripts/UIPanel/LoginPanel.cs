@@ -11,8 +11,10 @@ public class LoginPanel : BasePanel {
     private Button closeButton;
     private InputField usernameIF;
     private InputField passwordIF;
+    private LoginRequest loginRequest;
     private void Start()
     {
+        loginRequest = GetComponent<LoginRequest>();
         loginButton = transform.Find("ButtonLogin").GetComponent<Button>();
         registerButton= transform.Find("ButtonRegister").GetComponent<Button>();
         closeButton = transform.Find("ButtonClose").GetComponent<Button>();
@@ -69,6 +71,7 @@ public class LoginPanel : BasePanel {
             uiMng.ShowMessage(msg);
             return;
         }
+        loginRequest.SendRequest(usernameIF.text, passwordIF.text);
     }
     private void OnRegisterBtnClick()
     {
