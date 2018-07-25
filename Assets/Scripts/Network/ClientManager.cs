@@ -47,6 +47,11 @@ public class ClientManager : BaseManager {
     {
 
     }
+    public void SendRequest(RequestCode requestCode,ActionCode actionCode,string data)
+    {
+        byte[] bytes = Message.PackData(requestCode, actionCode, data);
+        clientSocket.Send(bytes);
+    }
     public override void OnDestroy()
     {
         base.OnDestroy();
