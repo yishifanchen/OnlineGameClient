@@ -7,7 +7,16 @@ using DG.Tweening;
 public class MessagePanel : BasePanel {
     private Text text;
     private float showTime=1;
+    private string message = null;
 
+    private void Update()
+    {
+        if (message != null)
+        {
+            ShowMessage(message);
+            message = null; 
+        }
+    }
     public override void OnEnter()
     {
         base.OnEnter();
@@ -21,6 +30,10 @@ public class MessagePanel : BasePanel {
         text.text = msg;
         text.enabled = true;
         Invoke("Hide",showTime);
+    }
+    public void ShowMessageSync(string msg)
+    {
+        message = msg;
     }
     private void Hide()
     {

@@ -65,8 +65,20 @@ public class GameFacade : MonoBehaviour {
         clientMng.OnDestroy();
         cameraMng.OnDestroy();
     }
+    public void AddRequest(ActionCode actionCode,BaseRequest request)
+    {
+        requestMng.AddRequest(actionCode,request);
+    }
+    public void RemoveRequest(ActionCode actionCode)
+    {
+        requestMng.RemoveRequest(actionCode);
+    }
     public void SendRequest(RequestCode requestCode, ActionCode actionCode, string data)
     {
         clientMng.SendRequest(requestCode,actionCode,data);
+    }
+    public void HandleResponse(ActionCode actionCode,string data)
+    {
+        requestMng.HandleResponse(actionCode,data);
     }
 }

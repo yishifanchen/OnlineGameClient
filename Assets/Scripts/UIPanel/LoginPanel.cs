@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Common;
 
 public class LoginPanel : BasePanel {
     private Button loginButton;
@@ -89,5 +90,16 @@ public class LoginPanel : BasePanel {
     {
         transform.DOScale(0, 0.3f);
         transform.DOLocalMove(new Vector3(2000, 0, 0), 0.3f).OnComplete(() => gameObject.SetActive(false));
+    }
+    public void OnLoginResponse(ReturnCode returnCode)
+    {
+        if (returnCode == ReturnCode.Success)
+        {
+            uiMng.ShowMessageSync("登陆成功！");
+        }
+        else
+        {
+            uiMng.ShowMessageSync("用户名或密码输入错误，无法登陆，请重新输入！");
+        }
     }
 }

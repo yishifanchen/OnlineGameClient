@@ -1,22 +1,23 @@
-﻿using DG.Tweening;
+﻿using Common;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RegisterPanel : BasePanel {
-    private Button closeButton;
     private InputField usernameIF;
     private InputField passwordIF;
     private InputField rePasswordIF;
-    private Button registerButton;
+    private RegisterRequest registerRequest;
     private void Start()
     {
-        closeButton = transform.Find("ButtonClose").GetComponent<Button>();
+        registerRequest = GetComponent<RegisterRequest>();
         usernameIF = transform.Find("UsernameLabel/InputField").GetComponent<InputField>();
         passwordIF = transform.Find("PasswordLabel/InputField").GetComponent<InputField>();
         rePasswordIF = transform.Find("RePasswordLabel/InputField").GetComponent<InputField>();
-        closeButton.onClick.AddListener(OnCloseBtnClick);
+        transform.Find("ButtonClose").GetComponent<Button>().onClick.AddListener(OnCloseBtnClick);
+        transform.Find("ButtonRegister").GetComponent<Button>().onClick.AddListener(OnRegisterBtnClick);
     }
     private void Update()
     {
@@ -48,7 +49,36 @@ public class RegisterPanel : BasePanel {
     }
     private void OnRegisterBtnClick()
     {
-        uiMng.PushPanel(UIPanelType.Register);
+        string msg="";
+        if (string.IsNullOrEmpty(usernameIF.text))
+        {
+            msg += "用户名不能为空";
+        }
+        if (string.IsNullOrEmpty(passwordIF.text))
+        {
+            msg += "\n密码不能为空";
+        }
+        if (passwordIF.text!=rePasswordIF.text)
+        {
+            msg += "\n密码不一致";
+        }
+        if (msg != "")
+        {
+            uiMng.ShowMessage(msg);
+            return;
+        }
+        registerRequest.SendRequest(usernameIF.text,passwordIF.text);
+    }
+    public void OnRegisterResponse(ReturnCode returnCode)
+    {
+        if (returnCode == ReturnCode.Success)
+        {
+            uiMng.ShowMessageSync("注册成功！");
+        }
+        else
+        {
+            uiMng.ShowMessageSync("注册失败");
+        }
     }
     private void EnterAnim()
     {

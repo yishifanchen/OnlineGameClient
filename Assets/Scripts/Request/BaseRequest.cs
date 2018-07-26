@@ -18,12 +18,20 @@ public class BaseRequest : MonoBehaviour {
             return facade;
         }
     }
-    public virtual void AddRequest(RequestCode requestCode)
+    public virtual void Awake()
     {
-
+        Facade.AddRequest(actionCode,this);
     }
     protected void SendRequest(string data)
     {
         Facade.SendRequest(requestCode, actionCode, data);
+    }
+    public virtual void OnResponse(string data) { }
+    public virtual void OnDestroy()
+    {
+        if (facade != null)
+        {
+            facade.RemoveRequest(actionCode);
+        }
     }
 }

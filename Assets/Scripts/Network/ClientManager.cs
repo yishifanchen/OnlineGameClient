@@ -45,11 +45,10 @@ public class ClientManager : BaseManager {
     }
     private void OnProcessDataCallback(ActionCode actionCode,string data)
     {
-
+        facade.HandleResponse(actionCode,data);
     }
     public void SendRequest(RequestCode requestCode,ActionCode actionCode,string data)
     {
-        Debug.Log(requestCode.ToString() + actionCode.ToString() + data);
         byte[] bytes = Message.PackData(requestCode, actionCode, data);
         clientSocket.Send(bytes);
     }
@@ -62,7 +61,7 @@ public class ClientManager : BaseManager {
         }
         catch (Exception e)
         {
-            Debug.Log(e);
+            Debug.Log("无法关闭跟服务器端的连接！！"+e);
         }
     }
 }
