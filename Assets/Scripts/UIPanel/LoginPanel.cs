@@ -96,6 +96,7 @@ public class LoginPanel : BasePanel {
         if (returnCode == ReturnCode.Success)
         {
             uiMng.ShowMessageSync("登陆成功！");
+            uiMng.PushPanelSync(UIPanelType.RoomList);
         }
         else
         {

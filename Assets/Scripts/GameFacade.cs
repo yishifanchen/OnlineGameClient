@@ -81,4 +81,12 @@ public class GameFacade : MonoBehaviour {
     {
         requestMng.HandleResponse(actionCode,data);
     }
+    public void SetUserData(UserData ud)
+    {
+        playerMng.UserData = ud;
+    }
+    public UserData GetUserData()
+    {
+        return playerMng.UserData;
+    }
 }
