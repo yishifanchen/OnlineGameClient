@@ -20,6 +20,7 @@ public class RoomListPanel : BasePanel
         totalCount = battleRes.Find("TotalCount").GetComponent<Text>();
         winCount = battleRes.Find("WinCount").GetComponent<Text>();
         transform.Find("RoomList/ButtonClose").GetComponent<Button>().onClick.AddListener(OnCloseBtnClick);
+        transform.Find("RoomList/CreatRoomButton").GetComponent<Button>().onClick.AddListener(OnCreatRoomBtnClick);
         SetBattleRes();
     }
     public override void OnEnter()
@@ -45,6 +46,10 @@ public class RoomListPanel : BasePanel
     private void OnCloseBtnClick()
     {
         uiMng.PopPanel();
+    }
+    private void OnCreatRoomBtnClick()
+    {
+        uiMng.PushPanel(UIPanelType.Room);
     }
     private void EnterAnim()
     {

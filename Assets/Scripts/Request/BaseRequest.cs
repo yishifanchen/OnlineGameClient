@@ -26,6 +26,7 @@ public class BaseRequest : MonoBehaviour {
     {
         Facade.SendRequest(requestCode, actionCode, data);
     }
+    public virtual void SendRequest() { }
     public virtual void OnResponse(string data) { }
     public virtual void OnDestroy()
     {
