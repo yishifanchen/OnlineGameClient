@@ -207,7 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224681756567915460}
   - component: {fileID: 222367840614096076}
-  - component: {fileID: 114008032803309876}
+  - component: {fileID: 114418475651231570}
   m_Layer: 5
   m_Name: RoomPanel
   m_TagString: Untagged
@@ -233,17 +233,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114008032803309876
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1878227222550098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c341e7e7ddf36a04d83c882b27761df1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114050772513202670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -378,6 +367,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114418475651231570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878227222550098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9c191cabd17084d8df5e1f207a626e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114515173256383762
 MonoBehaviour:
   m_ObjectHideFlags: 1
