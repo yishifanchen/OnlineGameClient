@@ -14,4 +14,8 @@ public class CreatRoomRequest : BaseRequest {
     {
         base.SendRequest("r");
     }
+    public override void OnResponse(string data)
+    {
+        base.OnResponse(data);
+    }
 }
