@@ -7,9 +7,10 @@ using UnityEngine.UI;
 
 public class RoomPanel : BasePanel
 {
+
     private void Start()
     {
-
+        transform.Find("ImageBG/Buttons/ButtonQuit").GetComponent<Button>().onClick.AddListener(OnCloseBtnClick);
     }
     public override void OnEnter()
     {
@@ -34,10 +35,6 @@ public class RoomPanel : BasePanel
     private void OnCloseBtnClick()
     {
         uiMng.PopPanel();
-    }
-    private void OnCreatRoomBtnClick()
-    {
-        uiMng.PushPanel(UIPanelType.Room);
     }
     private void EnterAnim()
     {
