@@ -69,8 +69,12 @@ public class RoomPanel : BasePanel
     }
     public void SetLocalPlayerRes(string username,string totalCount,string winCount)
     {
-        localPlayerUsername.text = username;
-        localPlayerTotalCount.text = totalCount;
-        localPlayerWinCount.text = winCount;
+        localPlayerUsername.text = "玩家:"+username;
+        localPlayerTotalCount.text = "总场数:"+totalCount;
+        localPlayerWinCount.text = "胜场:"+winCount;
+    }
+    public void SetLocalPlayerResSync()
+    {
+        ud1 = facade.GetUserData();
     }
 }

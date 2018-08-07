@@ -68,7 +68,7 @@ public class UIManager:BaseManager {
     /// <summary>
     /// 把某个页面入栈，  把某个页面显示在界面上
     /// </summary>
-    public void PushPanel(UIPanelType panelType)
+    public BasePanel PushPanel(UIPanelType panelType)
     {
         if (panelStack == null)
             panelStack = new Stack<BasePanel>();
@@ -83,6 +83,7 @@ public class UIManager:BaseManager {
         BasePanel panel = GetPanel(panelType);
         panel.OnEnter();
         panelStack.Push(panel);
+        return panel;
     }
     /// <summary>
     /// 出栈 ，把页面从界面上移除
