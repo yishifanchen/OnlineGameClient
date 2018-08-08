@@ -24,7 +24,7 @@ public class LoginRequest : BaseRequest {
         loginPanel.OnLoginResponse(returnCode);
         if (returnCode == ReturnCode.Success)
         {
-            
+            print(1);
         }
     }
 }
