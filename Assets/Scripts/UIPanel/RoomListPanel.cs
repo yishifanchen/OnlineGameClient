@@ -14,6 +14,7 @@ public class RoomListPanel : BasePanel
     private Text winCount;
 
     private CreatRoomRequest createRoomRequest;
+    private ListRoomRequest listRoomRequest;
     private void Start()
     {
         battleRes = transform.Find("BattleRes").GetComponent<RectTransform>();
@@ -24,12 +25,15 @@ public class RoomListPanel : BasePanel
         transform.Find("RoomList/ButtonClose").GetComponent<Button>().onClick.AddListener(OnCloseBtnClick);
         transform.Find("RoomList/CreatRoomButton").GetComponent<Button>().onClick.AddListener(OnCreatRoomBtnClick);
         createRoomRequest = GetComponent<CreatRoomRequest>();
+        listRoomRequest = GetComponent<ListRoomRequest>();
         SetBattleRes();
     }
     public override void OnEnter()
     {
-        base.OnEnter();
         EnterAnim();
+        if(listRoomRequest==null)
+            listRoomRequest = GetComponent<ListRoomRequest>();
+        listRoomRequest.SendRequest();
     }
     public override void OnPause()
     {
