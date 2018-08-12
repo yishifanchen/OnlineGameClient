@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 114576519525313652}
   - component: {fileID: 114835801681553184}
   m_Layer: 5
-  m_Name: ButtonRegister
+  m_Name: RegisterButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 114569693687235298}
   - component: {fileID: 114973583563855968}
   m_Layer: 5
-  m_Name: ButtonClose
+  m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

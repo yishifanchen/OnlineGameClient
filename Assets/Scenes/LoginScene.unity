@@ -645,8 +645,8 @@ RectTransform:
 RectTransform:
   m_PrefabParentObject: {fileID: 224912046951124260, guid: 0bd5c9974756411409eff2b38ebdf964,
     type: 2}
-  m_PrefabInternal: {fileID: 838136094}
---- !u!1001 &838136094
+  m_PrefabInternal: {fileID: 787773550}
+--- !u!1001 &787773550
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -746,7 +746,7 @@ Prefab:
     - target: {fileID: 224840338866496744, guid: 0bd5c9974756411409eff2b38ebdf964,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.30069828
+      value: 0.3078425
       objectReference: {fileID: 0}
     - target: {fileID: 224840338866496744, guid: 0bd5c9974756411409eff2b38ebdf964,
         type: 2}

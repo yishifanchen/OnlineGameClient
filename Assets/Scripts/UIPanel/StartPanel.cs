@@ -10,7 +10,7 @@ public class StartPanel : BasePanel {
     public override void OnEnter()
     {
         base.OnEnter();
-        loginButton = transform.Find("ButtonLogin").GetComponent<Button>();
+        loginButton = transform.Find("LoginButton").GetComponent<Button>();
         loginButton.onClick.AddListener(OnloginButtonClick);
         loginButtonAnim = loginButton.GetComponent<Animator>();
     }

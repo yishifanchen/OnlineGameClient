@@ -12,6 +12,9 @@ public class RoomListPanel : BasePanel
     private Text username;
     private Text totalCount;
     private Text winCount;
+    private List<UserData> udList=null;
+    private GameObject roomItemPrefab;
+    private GridLayoutGroup roomLayout;
 
     private CreatRoomRequest createRoomRequest;
     private ListRoomRequest listRoomRequest;
@@ -22,11 +25,22 @@ public class RoomListPanel : BasePanel
         username = battleRes.Find("Username").GetComponent<Text>();
         totalCount = battleRes.Find("TotalCount").GetComponent<Text>();
         winCount = battleRes.Find("WinCount").GetComponent<Text>();
-        transform.Find("RoomList/ButtonClose").GetComponent<Button>().onClick.AddListener(OnCloseBtnClick);
+        roomLayout = transform.Find("RoomList/Scroll View/Viewport/RoomLayout").GetComponent<GridLayoutGroup>();
+        transform.Find("RoomList/CloseButton").GetComponent<Button>().onClick.AddListener(OnCloseBtnClick);
         transform.Find("RoomList/CreatRoomButton").GetComponent<Button>().onClick.AddListener(OnCreatRoomBtnClick);
+        transform.Find("RoomList/RefreshButton").GetComponent<Button>().onClick.AddListener(OnRefreshBtnClick);
+        roomItemPrefab = Resources.Load("UIPanel/RoomItem") as GameObject;
         createRoomRequest = GetComponent<CreatRoomRequest>();
         listRoomRequest = GetComponent<ListRoomRequest>();
         SetBattleRes();
+    }
+    private void Update()
+    {
+        if (udList != null)
+        {
+            LoadRoomItem(udList);
+            udList = null;
+        }
     }
     public override void OnEnter()
     {
@@ -54,6 +68,10 @@ public class RoomListPanel : BasePanel
     {
         uiMng.PopPanel();
     }
+    private void OnRefreshBtnClick()
+    {
+        listRoomRequest.SendRequest();
+    }
     private void OnCreatRoomBtnClick()
     {
         BasePanel panel = uiMng.PushPanel(UIPanelType.Room);
@@ -79,5 +97,24 @@ public class RoomListPanel : BasePanel
         username.text = ud.Username;
         totalCount.text = "总场数："+ud.TotalCount.ToString();
         winCount.text = "胜利："+ud.WinCount.ToString();
+    }
+    private void LoadRoomItem(List<UserData> udList)
+    {
+        RoomItem[] roomItems = roomLayout.GetComponentsInChildren<RoomItem>();
+        foreach(RoomItem ri in roomItems)
+        {
+            ri.DestroySelf();
+        }
+        for(int i = 0; i < udList.Count; i++)
+        {
+            GameObject roomItem = GameObject.Instantiate(roomItemPrefab);
+            roomItem.transform.SetParent(roomLayout.transform,false);
+            UserData ud = udList[i];
+            roomItem.GetComponent<RoomItem>().SetRoomItemInfo(ud.Id,ud.Username,ud.TotalCount,ud.WinCount,this);
+        }
+    }
+    public void LoadRoomItemSync(List<UserData> udList)
+    {
+        this.udList = udList;
     }
 }

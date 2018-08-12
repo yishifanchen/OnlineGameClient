@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ListRoomRequest : BaseRequest {
+    private RoomListPanel roomListPanel;
     public override void Awake()
     {
         actionCode = ActionCode.ListRoom;
         requestCode = RequestCode.Room;
+        roomListPanel = GetComponent<RoomListPanel>();
         base.Awake();
     }
     public override void SendRequest()
@@ -16,6 +18,16 @@ public class ListRoomRequest : BaseRequest {
     }
     public override void OnResponse(string data)
     {
-        print(data);
+        List<UserData> udList = new List<UserData>();
+        if (data != "0")
+        {
+            string[] udArray = data.Split('|');
+            foreach(string ud in udArray)
+            {
+                string[] strs = ud.Split(',');
+                udList.Add(new UserData(int.Parse(strs[0]), strs[1], int.Parse(strs[2]), int.Parse(strs[3])));
+            }
+        }
+        roomListPanel.LoadRoomItemSync(udList);
     }
 }

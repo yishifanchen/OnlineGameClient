@@ -16,8 +16,8 @@ public class RegisterPanel : BasePanel {
         usernameIF = transform.Find("UsernameLabel/InputField").GetComponent<InputField>();
         passwordIF = transform.Find("PasswordLabel/InputField").GetComponent<InputField>();
         rePasswordIF = transform.Find("RePasswordLabel/InputField").GetComponent<InputField>();
-        transform.Find("ButtonClose").GetComponent<Button>().onClick.AddListener(OnCloseBtnClick);
-        transform.Find("ButtonRegister").GetComponent<Button>().onClick.AddListener(OnRegisterBtnClick);
+        transform.Find("CloseButton").GetComponent<Button>().onClick.AddListener(OnCloseBtnClick);
+        transform.Find("RegisterButton").GetComponent<Button>().onClick.AddListener(OnRegisterBtnClick);
     }
     private void Update()
     {
