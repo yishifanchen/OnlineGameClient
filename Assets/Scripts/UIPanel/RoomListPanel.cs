@@ -18,6 +18,7 @@ public class RoomListPanel : BasePanel
 
     private CreatRoomRequest createRoomRequest;
     private ListRoomRequest listRoomRequest;
+    private JoinRoomRequest joinRoomRequest;
     private void Start()
     {
         battleRes = transform.Find("BattleRes").GetComponent<RectTransform>();
@@ -32,6 +33,7 @@ public class RoomListPanel : BasePanel
         roomItemPrefab = Resources.Load("UIPanel/RoomItem") as GameObject;
         createRoomRequest = GetComponent<CreatRoomRequest>();
         listRoomRequest = GetComponent<ListRoomRequest>();
+        joinRoomRequest = GetComponent<JoinRoomRequest>();
         SetBattleRes();
     }
     private void Update()
@@ -77,6 +79,10 @@ public class RoomListPanel : BasePanel
         BasePanel panel = uiMng.PushPanel(UIPanelType.Room);
         createRoomRequest.SetPanel(panel);
         createRoomRequest.SendRequest();
+    }
+    public void OnJoinBtnClick(int id)
+    {
+        joinRoomRequest.SendRequest(id);
     }
     private void EnterAnim()
     {

@@ -27,7 +27,7 @@ public class RoomItem : MonoBehaviour {
     }
 	private void OnJoinBtnClick()
     {
-
+        panel.OnJoinBtnClick(id);
     }
     public void DestroySelf()
     {
