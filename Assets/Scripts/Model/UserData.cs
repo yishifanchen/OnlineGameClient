@@ -21,4 +21,11 @@ public class UserData {
         this.TotalCount = totalCount;
         this.WinCount = winCount;
     }
+    public UserData(int id,string username, int totalCount, int winCount)
+    {
+        this.Id = id;
+        this.Username = username;
+        this.TotalCount = totalCount;
+        this.WinCount = winCount;
+    }
 }

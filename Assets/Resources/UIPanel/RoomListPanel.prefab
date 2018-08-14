@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 114017999652490390}
   - component: {fileID: 114010502326629010}
   m_Layer: 5
-  m_Name: ButtonClose
+  m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 224872453211483870}
   - component: {fileID: 114751721108539494}
   m_Layer: 5
-  m_Name: Content
+  m_Name: RoomLayout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 222230336655588134}
   - component: {fileID: 114363684224804514}
   - component: {fileID: 114155032889290030}
+  - component: {fileID: 114371725853444636}
   m_Layer: 5
   m_Name: RoomListPanel
   m_TagString: Untagged
@@ -458,7 +459,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 224630499861502138}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 114534145686765256}
@@ -572,6 +573,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ef72e2777891a54f98933f04fe569f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114371725853444636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1459788593171604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 708e7a2fba0a48a48a348149b1226ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114372038286305820
@@ -807,7 +819,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224840338866496744}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6993017
+  m_Size: 0.6921575
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -865,14 +877,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
+    m_Left: 5
     m_Right: 0
-    m_Top: 0
+    m_Top: 5
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 200, y: 100}
+  m_CellSize: {x: 730, y: 60}
   m_Spacing: {x: 8, y: 8}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -1209,7 +1221,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: -20}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224770741615485822
 RectTransform:
@@ -1300,7 +1312,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224860048607525888
 RectTransform:
@@ -1337,8 +1349,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000022344402}
-  m_SizeDelta: {x: -70, y: 658.8}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 665.6}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224893803285663080
 RectTransform:

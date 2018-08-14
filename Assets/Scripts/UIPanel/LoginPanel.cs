@@ -16,9 +16,9 @@ public class LoginPanel : BasePanel {
     private void Start()
     {
         loginRequest = GetComponent<LoginRequest>();
-        loginButton = transform.Find("ButtonLogin").GetComponent<Button>();
-        registerButton= transform.Find("ButtonRegister").GetComponent<Button>();
-        closeButton = transform.Find("ButtonClose").GetComponent<Button>();
+        loginButton = transform.Find("LoginButton").GetComponent<Button>();
+        registerButton= transform.Find("RegisterButton").GetComponent<Button>();
+        closeButton = transform.Find("CloseButton").GetComponent<Button>();
         usernameIF= transform.Find("UsernameLabel/InputField").GetComponent<InputField>();
         passwordIF = transform.Find("PasswordLabel/InputField").GetComponent<InputField>();
         loginButton.onClick.AddListener(OnLoginBtnClick);
