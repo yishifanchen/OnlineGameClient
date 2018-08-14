@@ -3,9 +3,14 @@ using System.Collections;
 
 public class BasePanel : MonoBehaviour {
     protected UIManager uiMng;
+    protected GameFacade facade;
     public UIManager UIMng
     {
         set { uiMng = value; }
+    }
+    public GameFacade Facade
+    {
+        set { facade = value; }
     }
     /// <summary>
     /// 界面被显示出来

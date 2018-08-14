@@ -40,10 +40,19 @@ public class UIManager:BaseManager {
     private Dictionary<UIPanelType, BasePanel> panelDict;//保存所有实例化面板的游戏物体身上的BasePanel组件
     private Stack<BasePanel> panelStack;
     private MessagePanel msgPanel;
+    private UIPanelType uiPanelTypeSync = UIPanelType.None;
 
     public UIManager(GameFacade facade):base(facade)
     {
         ParseUIPanelTypeJson();
+    }
+    public override void Update()
+    {
+        if (uiPanelTypeSync != UIPanelType.None)
+        {
+            PushPanel(uiPanelTypeSync);
+            uiPanelTypeSync = UIPanelType.None;
+        }
     }
 
     public override void OnInit()
@@ -52,11 +61,14 @@ public class UIManager:BaseManager {
         PushPanel(UIPanelType.Message);
         PushPanel(UIPanelType.Start);
     }
-
+    public void PushPanelSync(UIPanelType uiPanelType)
+    {
+        uiPanelTypeSync = uiPanelType;
+    }
     /// <summary>
     /// 把某个页面入栈，  把某个页面显示在界面上
     /// </summary>
-    public void PushPanel(UIPanelType panelType)
+    public BasePanel PushPanel(UIPanelType panelType)
     {
         if (panelStack == null)
             panelStack = new Stack<BasePanel>();
@@ -71,6 +83,7 @@ public class UIManager:BaseManager {
         BasePanel panel = GetPanel(panelType);
         panel.OnEnter();
         panelStack.Push(panel);
+        return panel;
     }
     /// <summary>
     /// 出栈 ，把页面从界面上移除
@@ -116,6 +129,7 @@ public class UIManager:BaseManager {
             string path = panelPathDict.TryGet(panelType);
             GameObject instPanel = GameObject.Instantiate(Resources.Load(path)) as GameObject;
             instPanel.GetComponent<BasePanel>().UIMng = this;
+            instPanel.GetComponent<BasePanel>().Facade = facade;
             instPanel.transform.SetParent(CanvasTransform,false);
             panelDict.Add(panelType, instPanel.GetComponent<BasePanel>());
             return instPanel.GetComponent<BasePanel>();
