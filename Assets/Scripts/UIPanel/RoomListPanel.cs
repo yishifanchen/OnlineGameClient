@@ -19,6 +19,9 @@ public class RoomListPanel : BasePanel
     private CreatRoomRequest createRoomRequest;
     private ListRoomRequest listRoomRequest;
     private JoinRoomRequest joinRoomRequest;
+    private UserData ud1=null;
+    private UserData ud2=null;
+
     private void Start()
     {
         battleRes = transform.Find("BattleRes").GetComponent<RectTransform>();
@@ -42,6 +45,12 @@ public class RoomListPanel : BasePanel
         {
             LoadRoomItem(udList);
             udList = null;
+        }
+        if (ud1 != null && ud2 != null)
+        {
+            BasePanel panel = uiMng.PushPanel(UIPanelType.Room);
+            (panel as RoomPanel).SetAllPlayerResSync(ud1,ud2);
+            ud1 = null;ud2 = null;
         }
     }
     public override void OnEnter()
@@ -122,5 +131,21 @@ public class RoomListPanel : BasePanel
     public void LoadRoomItemSync(List<UserData> udList)
     {
         this.udList = udList;
+    }
+    public void OnJoinResponse(ReturnCode returnCode,UserData ud1,UserData ud2)
+    {
+        switch (returnCode)
+        {
+            case ReturnCode.NotFound:
+                uiMng.ShowMessageSync("房间被销毁，无法加入");
+                break;
+            case ReturnCode.Fail:
+                uiMng.ShowMessageSync("房间人数已满，无法加入");
+                break;
+            case ReturnCode.Success:
+                this.ud1 = ud1;
+                this.ud2 = ud2;
+                break;
+        }
     }
 }

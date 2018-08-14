@@ -5,11 +5,12 @@ using Common;
 
 public class JoinRoomRequest : BaseRequest
 {
-
+    private RoomListPanel roomListPanel;
     public override void Awake()
     {
         actionCode = ActionCode.JoinRoom;
         requestCode = RequestCode.Room;
+        roomListPanel = GetComponent<RoomListPanel>();
         base.Awake();
     }
     public void SendRequest(int id)
@@ -18,6 +19,16 @@ public class JoinRoomRequest : BaseRequest
     }
     public override void OnResponse(string data)
     {
-        
+        string[] strs = data.Split('-');
+        ReturnCode returnCode = (ReturnCode)int.Parse(strs[0]);
+        UserData ud1 = null;
+        UserData ud2 = null;
+        if (returnCode==ReturnCode.Success)
+        {
+            string[] udArray = strs[1].Split('|');
+            ud1 = new UserData(udArray[0]);
+            ud2 = new UserData(udArray[1]);
+        }
+        roomListPanel.OnJoinResponse(returnCode,ud1,ud2);
     }
 }
