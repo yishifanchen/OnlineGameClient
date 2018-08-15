@@ -55,8 +55,10 @@ public class RoomListPanel : BasePanel
     }
     public override void OnEnter()
     {
+        if(username!=null)
+            SetBattleRes();
         EnterAnim();
-        if(listRoomRequest==null)
+        if (listRoomRequest==null)
             listRoomRequest = GetComponent<ListRoomRequest>();
         listRoomRequest.SendRequest();
     }
@@ -127,6 +129,12 @@ public class RoomListPanel : BasePanel
             UserData ud = udList[i];
             roomItem.GetComponent<RoomItem>().SetRoomItemInfo(ud.Id,ud.Username,ud.TotalCount,ud.WinCount,this);
         }
+        roomLayout.GetComponent<RectTransform>().sizeDelta =
+            new Vector2(
+                roomLayout.GetComponent<RectTransform>().sizeDelta.x,
+                udList.Count * (roomLayout.cellSize.y + roomLayout.spacing.y) + roomLayout.padding.top
+                );
+        print(udList.Count * (roomLayout.cellSize.y + roomLayout.spacing.y) + roomLayout.padding.top);
     }
     public void LoadRoomItemSync(List<UserData> udList)
     {

@@ -19,10 +19,6 @@ public class RegisterPanel : BasePanel {
         transform.Find("CloseButton").GetComponent<Button>().onClick.AddListener(OnCloseBtnClick);
         transform.Find("RegisterButton").GetComponent<Button>().onClick.AddListener(OnRegisterBtnClick);
     }
-    private void Update()
-    {
-        
-    }
     public override void OnEnter()
     {
         base.OnEnter();
