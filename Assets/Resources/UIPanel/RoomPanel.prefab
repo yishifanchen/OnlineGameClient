@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 114341510163843400}
   - component: {fileID: 114640944916898220}
   m_Layer: 5
-  m_Name: ButtonReady
+  m_Name: ReadyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 114522133178712672}
   - component: {fileID: 114050772513202670}
   m_Layer: 5
-  m_Name: ButtonQuit
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,6 +312,7 @@ GameObject:
   - component: {fileID: 114739626254330766}
   - component: {fileID: 114400538413098764}
   - component: {fileID: 114157680095377280}
+  - component: {fileID: 114453198654519902}
   m_Layer: 5
   m_Name: RoomPanel
   m_TagString: Untagged
@@ -348,7 +349,7 @@ GameObject:
   - component: {fileID: 114604975710870850}
   - component: {fileID: 114526322317553672}
   m_Layer: 5
-  m_Name: ButtonStart
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -628,6 +629,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cc8c04bcf0245f40b064701b7095ffe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114453198654519902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878227222550098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ed6cde6e9f201e4f8868895ea34bff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114483133590686038

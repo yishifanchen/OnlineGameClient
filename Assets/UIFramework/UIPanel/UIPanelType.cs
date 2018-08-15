@@ -11,5 +11,6 @@ public enum UIPanelType  {
     RoomList,
     Start,
     Game,
-    Message
+    Message,
+    Null
 }

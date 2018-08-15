@@ -6,6 +6,7 @@ public class BasePanel : MonoBehaviour {
     protected GameFacade facade;
     public UIManager UIMng
     {
+        get { return uiMng; }
         set { uiMng = value; }
     }
     public GameFacade Facade

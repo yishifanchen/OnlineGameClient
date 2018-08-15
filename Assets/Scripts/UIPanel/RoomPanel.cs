@@ -24,6 +24,7 @@ public class RoomPanel : BasePanel
     private bool isPopPanel=false;
 
     private QuitRoomRequest quitRoomRequest;
+    private StartGameRequest startGameRequest;
     private void Start()
     {
         localPlayerUsername = transform.Find("ImageBG/PlayerList/PlayerInfoPanel1/NameLabel").GetComponent<Text>();
@@ -34,9 +35,11 @@ public class RoomPanel : BasePanel
         enemyPlayerTotalCount = transform.Find("ImageBG/PlayerList/PlayerInfoPanel2/TotalCountLabel").GetComponent<Text>();
         enemyPlayerWinCount = transform.Find("ImageBG/PlayerList/PlayerInfoPanel2/WinCountLabel").GetComponent<Text>();
 
-        transform.Find("ImageBG/Buttons/ButtonQuit").GetComponent<Button>().onClick.AddListener(OnCloseBtnClick);
+        transform.Find("ImageBG/Buttons/QuitButton").GetComponent<Button>().onClick.AddListener(OnCloseBtnClick);
+        transform.Find("ImageBG/Buttons/StartButton").GetComponent<Button>().onClick.AddListener(OnStartBtnClick);
 
         quitRoomRequest = GetComponent<QuitRoomRequest>();
+        startGameRequest = GetComponent<StartGameRequest>();
     }
     private void Update()
     {
@@ -80,7 +83,10 @@ public class RoomPanel : BasePanel
     private void OnCloseBtnClick()
     {
         quitRoomRequest.SendRequest();
-        //uiMng.PopPanel();
+    }
+    private void OnStartBtnClick()
+    {
+        startGameRequest.SendRequest();
     }
     private void EnterAnim()
     {
@@ -125,5 +131,17 @@ public class RoomPanel : BasePanel
     public void OnExitResponse()
     {
         isPopPanel = true;
+    }
+    public void OnStartResponse(ReturnCode returnCode)
+    {
+        if (returnCode == ReturnCode.Fail)
+        {
+            uiMng.ShowMessageSync("您不是房主，无法开始游戏！！！");
+        }
+        else
+        {
+            uiMng.PushPanelSync(UIPanelType.Game);
+            facade.EnterPlayingSync();
+        }
     }
 }

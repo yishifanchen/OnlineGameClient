@@ -134,7 +134,6 @@ public class RoomListPanel : BasePanel
                 roomLayout.GetComponent<RectTransform>().sizeDelta.x,
                 udList.Count * (roomLayout.cellSize.y + roomLayout.spacing.y) + roomLayout.padding.top
                 );
-        print(udList.Count * (roomLayout.cellSize.y + roomLayout.spacing.y) + roomLayout.padding.top);
     }
     public void LoadRoomItemSync(List<UserData> udList)
     {

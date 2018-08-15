@@ -23,6 +23,8 @@ public class GameFacade : MonoBehaviour {
     private PlayerManager playerMng;
     private ClientManager clientMng;
     private CameraManager cameraMng;
+
+    private bool isEnterPlaying = false;
     private void Start()
     {
         InitManager();
@@ -30,6 +32,11 @@ public class GameFacade : MonoBehaviour {
     private void Update()
     {
         UpdateManager();
+        if (isEnterPlaying)
+        {
+            EnterPlaying();
+            isEnterPlaying = false;
+        }
     }
     private void OnDestroy()
     {
@@ -88,5 +95,18 @@ public class GameFacade : MonoBehaviour {
     public UserData GetUserData()
     {
         return playerMng.UserData;
+    }
+    public void EnterPlayingSync()
+    {
+        isEnterPlaying = true;
+    }
+    private void EnterPlaying()
+    {
+        uiMng.ShowMessageSync("准备开始游戏！！！");
+    }
+    public void StartPlaying()
+    {
+        //todo
+        print("开始进入游戏");
     }
 }
