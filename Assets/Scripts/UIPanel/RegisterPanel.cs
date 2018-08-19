@@ -41,10 +41,12 @@ public class RegisterPanel : BasePanel {
     }
     private void OnCloseBtnClick()
     {
+        PlayClickSound();
         uiMng.PopPanel();
     }
     private void OnRegisterBtnClick()
     {
+        PlayClickSound();
         string msg="";
         if (string.IsNullOrEmpty(usernameIF.text))
         {

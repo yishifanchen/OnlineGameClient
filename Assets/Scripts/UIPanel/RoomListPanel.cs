@@ -79,20 +79,24 @@ public class RoomListPanel : BasePanel
     }
     private void OnCloseBtnClick()
     {
+        PlayClickSound();
         uiMng.PopPanel();
     }
     private void OnRefreshBtnClick()
     {
+        PlayClickSound();
         listRoomRequest.SendRequest();
     }
     private void OnCreatRoomBtnClick()
     {
+        PlayClickSound();
         BasePanel panel = uiMng.PushPanel(UIPanelType.Room);
         createRoomRequest.SetPanel(panel);
         createRoomRequest.SendRequest();
     }
     public void OnJoinBtnClick(int id)
     {
+        PlayClickSound();
         joinRoomRequest.SendRequest(id);
     }
     private void EnterAnim()
@@ -154,5 +158,10 @@ public class RoomListPanel : BasePanel
                 this.ud2 = ud2;
                 break;
         }
+    }
+    public void OnUpdateResultResponse(int totalCount,int winCount)
+    {
+        facade.UpdateResult(totalCount, winCount);
+        SetBattleRes();
     }
 }

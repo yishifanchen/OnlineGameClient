@@ -82,10 +82,12 @@ public class RoomPanel : BasePanel
     }
     private void OnCloseBtnClick()
     {
+        PlayClickSound();
         quitRoomRequest.SendRequest();
     }
     private void OnStartBtnClick()
     {
+        PlayClickSound();
         startGameRequest.SendRequest();
     }
     private void EnterAnim()

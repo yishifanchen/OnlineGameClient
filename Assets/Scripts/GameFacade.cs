@@ -23,6 +23,8 @@ public class GameFacade : MonoBehaviour {
     private PlayerManager playerMng;
     private ClientManager clientMng;
     private CameraManager cameraMng;
+    private AudioManager audioMng;
+    private PoolManager poolMng;
 
     private bool isEnterPlaying = false;
     private void Start()
@@ -49,12 +51,16 @@ public class GameFacade : MonoBehaviour {
         playerMng = new PlayerManager(this);
         clientMng = new ClientManager(this);
         cameraMng = new CameraManager(this);
+        audioMng = new AudioManager(this);
+        poolMng = new PoolManager(this);
 
         uiMng.OnInit();
         requestMng.OnInit();
         playerMng.OnInit();
         clientMng.OnInit();
         cameraMng.OnInit();
+        audioMng.OnInit();
+        poolMng.OnInit();
     }
     private void UpdateManager()
     {
@@ -63,6 +69,8 @@ public class GameFacade : MonoBehaviour {
         playerMng.Update();
         clientMng.Update();
         cameraMng.Update();
+        audioMng.Update();
+        poolMng.Update();
     }
     private void DestroyManager()
     {
@@ -71,6 +79,8 @@ public class GameFacade : MonoBehaviour {
         playerMng.OnDestroy();
         clientMng.OnDestroy();
         cameraMng.OnDestroy();
+        audioMng.OnDestroy();
+        poolMng.OnDestroy();
     }
     public void AddRequest(ActionCode actionCode,BaseRequest request)
     {
@@ -96,17 +106,42 @@ public class GameFacade : MonoBehaviour {
     {
         return playerMng.UserData;
     }
+    public void SetCurrentRoleType(RoleType rt)
+    {
+        playerMng.SetCurrentRoleType(rt);
+    }
+    public GameObject GetCurrentRoleGameObject()
+    {
+        return playerMng.GetCurrentRoleGameObject();
+    }
     public void EnterPlayingSync()
     {
         isEnterPlaying = true;
     }
     private void EnterPlaying()
     {
-        uiMng.ShowMessageSync("准备开始游戏！！！");
+        playerMng.SpawnRoles();
+        cameraMng.FollowRole();
     }
     public void StartPlaying()
     {
-        //todo
-        print("开始进入游戏");
+        playerMng.AddControlScript();
+        playerMng.CreatSyncRequest();
+    }
+    public void PlayBgSound(string soundName)
+    {
+        audioMng.PlayBgSound(soundName);
+    }
+    public void PlayNormalSound(string soundName,float volume=1)
+    {
+        audioMng.PlayNormalSound(soundName, volume);
+    }
+    public void SendAttack(int damage)
+    {
+        playerMng.SendAttack(damage);
+    }
+    public void UpdateResult(int totalCount,int winCount)
+    {
+        playerMng.UodateResult(totalCount,winCount);
     }
 }

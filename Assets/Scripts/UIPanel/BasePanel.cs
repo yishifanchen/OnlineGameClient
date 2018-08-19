@@ -13,6 +13,10 @@ public class BasePanel : MonoBehaviour {
     {
         set { facade = value; }
     }
+    protected void PlayClickSound()
+    {
+        facade.PlayNormalSound(AudioManager.Sound_ButtonClick,1f);
+    }
     /// <summary>
     /// 界面被显示出来
     /// </summary>

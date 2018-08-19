@@ -1,0 +1,8 @@
+Alert:Audio/Alert
+ArrowShoot:Audio/ArrowShoot
+Bg(fast):Audio/Bg(fast)
+Bg(moderate):Audio/Bg(moderate)
+ButtonClick:Audio/ButtonClick
+Miss:Audio/Miss
+ShootPerson:Audio/ShootPerson
+Timer:Audio/Timer

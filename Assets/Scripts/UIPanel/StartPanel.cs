@@ -16,6 +16,7 @@ public class StartPanel : BasePanel {
     }
     private void OnloginButtonClick()
     {
+        PlayClickSound();
         uiMng.PushPanel(UIPanelType.Login);
     }
     public override void OnPause()

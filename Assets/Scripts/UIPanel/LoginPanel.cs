@@ -54,10 +54,12 @@ public class LoginPanel : BasePanel {
     }
     private void OnCloseBtnClick()
     {
+        PlayClickSound();
         uiMng.PopPanel();
     }
     private void OnLoginBtnClick()
     {
+        PlayClickSound();
         string msg = "";
         if (string.IsNullOrEmpty(usernameIF.text))
         {
@@ -76,6 +78,7 @@ public class LoginPanel : BasePanel {
     }
     private void OnRegisterBtnClick()
     {
+        PlayClickSound();
         uiMng.PushPanel(UIPanelType.Register);
     }
     private void EnterAnim()

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Common;
 
 public class GamePanel : BasePanel {
     private Text timerLabel;
@@ -54,7 +55,7 @@ public class GamePanel : BasePanel {
     }
     private void OnQuitBtnClick()
     {
-
+        PlayClickSound();
     }
     public void ShowTimeSync(int time)
     {
@@ -70,5 +71,10 @@ public class GamePanel : BasePanel {
         timerLabel.text = time.ToString();
         timerLabel.transform.DOScale(2, 0.3f).SetDelay(0.3f);
         timerLabel.DOFade(0, 0.3f).SetDelay(0.3f).OnComplete(() => timerLabel.gameObject.SetActive(false));
+        facade.PlayNormalSound(AudioManager.Sound_Sound_Alert);
+    }
+    public void OnGameOverResponse(ReturnCode returnCode)
+    {
+        print(returnCode);
     }
 }
